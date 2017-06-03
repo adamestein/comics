@@ -1,10 +1,9 @@
 from setuptools import setup
 
-setup(name='YourAppName',
+setup(name='Comics',
       version='1.0',
-      description='OpenShift App',
-      author='Your Name',
-      author_email='example@example.com',
-      url='http://www.python.org/sigs/distutils-sig/',
-#      install_requires=['Django>=1.3'],
+      description='App to display comic strips',
+      author='Adam Stein',
+      author_email='adam@csh.rit.edu',
+      url='http://www.python.org/sigs/distutils-sig/'
      )
