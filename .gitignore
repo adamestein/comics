@@ -1,0 +1,6 @@
+*.pyc
+*.swp
+.idea
+datadumper.js
+media
+
