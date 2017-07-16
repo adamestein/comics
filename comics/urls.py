@@ -1,7 +1,10 @@
+from django.conf import settings
 from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
 admin.autodiscover()
+
+from comic_app.views import ComicTemplateView
 
 urlpatterns = patterns(
     '',
@@ -11,4 +14,13 @@ urlpatterns = patterns(
 
     # Top level home page URL pattern
     # url(r'^$', TemplateView.as_view(template_name='home.html'), name='home')
+
+    # Show a comic
+    url(r'^show/(?:(?P<sequence>\d+)/?)?$', ComicTemplateView.as_view(), name='show_comic')
 )
+
+if settings.DEBUG:
+    urlpatterns += patterns(
+        '',
+        (r'^media/(?P<path>.*)$','django.views.static.serve', {'document_root': settings.MEDIA_ROOT})
+    )

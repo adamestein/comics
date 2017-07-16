@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Pokémon Y: Challenge Mode - {{ comic.name }}{% endblock %}
+
+{% block css %}
+    {{ block.super }}
+
+    <style>
+        .cycle-prev, .cycle-next {
+            cursor: pointer;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            width: 30%;
+            z-index: 800;
+        }
+        .cycle-prev { left: 0;  background: url({% static 'img/left_arrow.png' %}) 50% 50% no-repeat;}
+        .cycle-next { right: 0; background: url({% static 'img/right_arrow.png' %}) 50% 50% no-repeat;}
+
+        .cycle-slideshow img {
+            height: auto;
+            width: 50%;
+        }
+
+        .name {
+            font-weight: bold;
+            margin-bottom: 0.5em;
+        }
+    </style>
+{% endblock %}
+
+{% block js %}
+    {{ block.super }}
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.cycle2.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.cycle2.center.min.js' %}"></script>
+
+    <script>
+        $(document).ready(function() {
+
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class="name"></div>
+
+    <div class="cycle-slideshow"
+         data-cycle-auto-height="calc"
+         data-cycle-caption=".name"
+         data-cycle-caption-template="{% verbatim %}{{alt}}{% endverbatim %}"
+         data-cycle-center-horz=true
+         data-cycle-fx="scrollHorz"
+         data-cycle-starting-slide="{{ start }}"
+         data-cycle-timeout="0"
+    >
+        <div class="cycle-prev"></div>
+        <div class="cycle-next"></div>
+        {% for comic in comics %}
+            <img src="{{ comic.image.url }}" alt="[{{ comic.sequence }}] {{ comic.name }}">
+        {% endfor %}
+    </div>
+
+    {% comment %}
+        Once there are a number of comics online, can add a way to get to any particular comic
+        via scrollbar. Code at http://jsfiddle.net/Mottie/TrQLK/.
+    {% endcomment %}
+{% endblock %}

@@ -86,17 +86,17 @@ MEDIA_ROOT = os.path.abspath(os.path.join(BASE_DIR, '..', 'media'))
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 # noinspection PyUnresolvedReferences
-STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, '../../..//', 'wsgi', 'static'))
+STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, '..', 'wsgi', 'static'))
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.normpath(os.path.join(BASE_DIR, '../../..//', 'static'))
+    os.path.normpath(os.path.join(BASE_DIR, '..', 'static'))
 ]
 
 STATICFILES_FINDERS = [
@@ -119,7 +119,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
 ]
 
 TEMPLATE_DIRS = [
-    os.path.normpath(os.path.join(BASE_DIR, '../../..//', 'templates'))
+    os.path.normpath(os.path.join(BASE_DIR, '..', 'templates'))
 ]
 
 # Version information

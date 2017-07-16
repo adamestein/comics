@@ -1,3 +1,5 @@
+from os.path import basename
+
 from django.conf import settings
 from django.db import models
 from django.db.models import Max
@@ -13,7 +15,7 @@ def next_sequence_number():
 class Comic(models.Model):
     name = models.CharField(max_length=50)
     sequence = models.PositiveIntegerField(default=next_sequence_number, unique=True)
-    image = models.ImageField(upload_to=settings.MEDIA_ROOT)
+    image = models.ImageField(upload_to='.')    # Stores images in MEDIA_ROOT
     slug = models.SlugField()
 
     class Meta:
