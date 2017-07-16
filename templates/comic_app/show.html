@@ -45,26 +45,30 @@
 {% endblock %}
 
 {% block content %}
-    <div class="name"></div>
+    {% if comics|length %}
+        <div class="name"></div>
 
-    <div class="cycle-slideshow"
-         data-cycle-auto-height="calc"
-         data-cycle-caption=".name"
-         data-cycle-caption-template="{% verbatim %}{{alt}}{% endverbatim %}"
-         data-cycle-center-horz=true
-         data-cycle-fx="scrollHorz"
-         data-cycle-starting-slide="{{ start }}"
-         data-cycle-timeout="0"
-    >
-        <div class="cycle-prev"></div>
-        <div class="cycle-next"></div>
-        {% for comic in comics %}
-            <img src="{{ comic.image.url }}" alt="[{{ comic.sequence }}] {{ comic.name }}">
-        {% endfor %}
-    </div>
+        <div class="cycle-slideshow"
+             data-cycle-auto-height="calc"
+             data-cycle-caption=".name"
+             data-cycle-caption-template="{% verbatim %}{{alt}}{% endverbatim %}"
+             data-cycle-center-horz=true
+             data-cycle-fx="scrollHorz"
+             data-cycle-starting-slide="{{ start }}"
+             data-cycle-timeout="0"
+        >
+            <div class="cycle-prev"></div>
+            <div class="cycle-next"></div>
+            {% for comic in comics %}
+                <img src="{{ comic.image.url }}" alt="[{{ comic.sequence }}] {{ comic.name }}">
+            {% endfor %}
+        </div>
 
-    {% comment %}
-        Once there are a number of comics online, can add a way to get to any particular comic
-        via scrollbar. Code at http://jsfiddle.net/Mottie/TrQLK/.
-    {% endcomment %}
+        {% comment %}
+            Once there are a number of comics online, can add a way to get to any particular comic
+            via scrollbar. Code at http://jsfiddle.net/Mottie/TrQLK/.
+        {% endcomment %}
+    {% else %}
+        <p>There are currently no comics to show.</p>
+    {% endif %}
 {% endblock %}

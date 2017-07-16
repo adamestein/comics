@@ -1,5 +1,7 @@
 from django.conf import settings
 from django.conf.urls import patterns, include, url
+from django.core.urlresolvers import reverse_lazy
+from django.views.generic import RedirectView
 
 from django.contrib import admin
 admin.autodiscover()
@@ -13,7 +15,7 @@ urlpatterns = patterns(
     url(r'^admin/', include(admin.site.urls)),
 
     # Top level home page URL pattern
-    # url(r'^$', TemplateView.as_view(template_name='home.html'), name='home')
+    url(r'^$', RedirectView.as_view(url=reverse_lazy('show_comic')), name='home'),
 
     # Show a comic
     url(r'^show/(?:(?P<sequence>\d+)/?)?$', ComicTemplateView.as_view(), name='show_comic')
