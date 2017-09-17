@@ -3,15 +3,14 @@ from base import *
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ['OPENSHIFT_APP_NAME'],
-        'USER': os.environ['OPENSHIFT_MYSQL_DB_USERNAME'],
-        'PASSWORD': os.environ['OPENSHIFT_MYSQL_DB_PASSWORD'],
-        'HOST': os.environ['OPENSHIFT_MYSQL_DB_HOST'],
-        'PORT': os.environ['OPENSHIFT_MYSQL_DB_PORT']
+        'NAME': jayfeather151$comics,
+        'USER': jayfeather151,
+        'PASSWORD': 1KQFCoRNLfwqe29,
+        'HOST': jayfeather151.mysql.pythonanywhere-services.com
     }
 }
 
-LOG_DIR = os.environ.get('OPENSHIFT_LOG_DIR')
+LOG_DIR = '/home/jayfeather151/logs'
 
 # Logging handlers
 
