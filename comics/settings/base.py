@@ -29,10 +29,7 @@ DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 from socket import gethostname
-ALLOWED_HOSTS = [
-    gethostname(),                          # For internal OpenShift load balancer security purposes.
-    os.environ.get('OPENSHIFT_APP_DNS'),    # Dynamically map to the OpenShift gear name.
-]
+ALLOWED_HOSTS = ['.pythonanywhere.com']
 
 INSTALLED_APPS = [
     # Django
