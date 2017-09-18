@@ -89,11 +89,11 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 # noinspection PyUnresolvedReferences
-STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, '..', 'wsgi', 'static'))
+STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, '..', 'static'))
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.normpath(os.path.join(BASE_DIR, '..', 'static'))
+    os.path.normpath(os.path.join(BASE_DIR, '..', 'apps', 'static'))
 ]
 
 STATICFILES_FINDERS = [
