@@ -28,7 +28,6 @@ DEBUG = False
 
 TEMPLATE_DEBUG = DEBUG
 
-from socket import gethostname
 ALLOWED_HOSTS = ['.pythonanywhere.com']
 
 INSTALLED_APPS = [
