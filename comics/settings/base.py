@@ -26,9 +26,23 @@ SECRET_KEY = '#c1^kjpgrv1jk)1-lw#&_-7et$0-h_wh$dlx&8ka@b@mu%&n)s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-TEMPLATE_DEBUG = DEBUG
-
-ALLOWED_HOSTS = ['.pythonanywhere.com']
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 8,
+        }
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
 
 INSTALLED_APPS = [
     # Django
@@ -39,9 +53,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-
-    # 3rd Party Apps
-    'south',
 
     # Apps
     'comic_app'
@@ -102,22 +113,24 @@ STATICFILES_FINDERS = [
 
 # Templates
 
-TEMPLATE_LOADERS = [
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-]
-
-TEMPLATE_CONTEXT_PROCESSORS = [
-    # Django context processors
-    'django.contrib.auth.context_processors.auth',
-    'django.contrib.messages.context_processors.messages',
-    'django.core.context_processors.static'
-]
-
-TEMPLATE_DIRS = [
-    os.path.normpath(os.path.join(BASE_DIR, '..', 'templates'))
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.normpath(os.path.join(BASE_DIR, '..', 'templates'))],
+        'OPTIONS': {
+            'context_processors': [
+                # Django context processors
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages'
+            ],
+            'loaders': [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader'
+            ]
+        }
+    }
 ]
 
 # Version information
 
-VERSION = '1.0'
+VERSION = '2.0'

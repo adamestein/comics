@@ -1,12 +1,17 @@
 from base import *
 
+ALLOWED_HOSTS = ['.pythonanywhere.com']
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'jayfeather151$default',
         'USER': 'jayfeather151',
         'PASSWORD': '1KQFCoRNLfwqe29',
-        'HOST': 'jayfeather151.mysql.pythonanywhere-services.com'
+        'HOST': 'jayfeather151.mysql.pythonanywhere-services.com',
+        'OPTIONS': {
+            'init_command': 'SET sql_mode="STRICT_ALL_TABLES"'
+        }
     }
 }
 

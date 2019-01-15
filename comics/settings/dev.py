@@ -1,7 +1,8 @@
 from base import *
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+
+ALLOWED_HOSTS = ['zookeeper.steinhome.net']
 
 DATABASES = {
     'default': {
@@ -9,7 +10,10 @@ DATABASES = {
         'NAME': 'comics',
         'USER': 'comics',
         'PASSWORD': 'comics',
-        'HOST': 'localhost'
+        'HOST': 'localhost',
+        'OPTIONS': {
+            'init_command': 'SET sql_mode="STRICT_ALL_TABLES"'
+        }
     }
 }
 
